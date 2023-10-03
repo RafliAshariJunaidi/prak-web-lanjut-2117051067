@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-</head>
-<body>
+<!-- </head> -->
+
+ <!-- <body> -->
+    <?= $this->extend('layouts/app')?>
+    <?= $this->section('content')?>
   
     <form action="<?=base_url('user/store')?>" method="post">
     <div class="d-flex justify-content-center align-items-center flex-column" style="height:100vh;width:100%;">
@@ -58,5 +61,6 @@
              <td><input type="submit" value="Simpan"></td>
          </tr>
      </form>
-</body>
-</html>
+     <?=$this->endSection()?>
+<!-- </body> -->
+<!-- </html> -->

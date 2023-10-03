@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,8 +21,11 @@
             font-weight:bold;
         }
     </style>
-</head>
-<body>
+<!-- </head> -->
+<!-- <body> -->
+    <?= $this->extend('layouts/app')?>
+    <?= $this->section('content')?>
+
     <div class ="custom-container container-fluid d-flex justify-content-center align-items-center flex-column" style="height:100vh;">
         <div class="d-flex justify-content-center align-items-center flex-column" style="border:7px solid black;width:50%;height:80%;box-shadow:10px 10px black;border-radius:15px;">
         <div class ="profil p-3 br-50 mb-3">
@@ -43,5 +46,6 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-</body>
-</html>
+<?=$this->endSection()?>
+<!-- </body>
+</html> -->
