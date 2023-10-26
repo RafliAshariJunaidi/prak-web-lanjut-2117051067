@@ -38,9 +38,8 @@ class UserController extends BaseController
     
     public function create()
     {
-        $kelasModel = New KelasModel();
 
-        $kelas = $kelasModel->getKelas();
+        $kelas = $this->kelasModel->getKelas();
         
         $data= [
             'title' => 'Create User',
@@ -75,7 +74,14 @@ class UserController extends BaseController
         // ];
         //  return view('create_user', $data);
 
-
+    public function show($id){
+        $user = $this->userModel->getUser($id);
+        $data = [
+            'title' => 'Profile',
+            'user' => $user
+        ];
+        return view('profile', $data);
+    }
     public function store()
     {
         $this->userModel->saveUser([
@@ -83,8 +89,6 @@ class UserController extends BaseController
             'id_kelas' => $this->request->getVar('kelas'),
             'npm' => $this->request->getVar('npm'),
         ]);
-        return redirect()->to('/user');
-        
         if (!$this->validate([
             'nama' => [
                 'rules' => 'required',
@@ -92,23 +96,33 @@ class UserController extends BaseController
                     'required' => '{field} mahasiswa harus di isi.'
                 ]
             ],
-            'npm' => [
-                'rules' => 'required|is_unique[user.npm]',
-                'errors' => [
-                    'required' => '{field} mahasiswa harus di isi.',
-                    'is_unique' => '{field} mahasiswa sudah terdaftar.'
-                ]
-            ]
+            // 'npm' => [
+            //     'rules' => 'required|is_unique[user.npm]',
+            //     'errors' => [
+            //         'required' => '{field} mahasiswa harus di isi.',
+            //         'is_unique' => '{field} mahasiswa sudah terdaftar.'
+            //     ]    
+            // ]
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->to(base_url('/user/create'))->withInput()->with('validation', $validation);
         }
-        $userModel = new UserModel();
 
-        $userModel->saveUser([
+        $path = 'assets/uploads/img/';
+
+        $foto = $this->request->getFile('foto');
+        $name = $foto->getRandomName();
+
+        if($foto->move($path, $name)) {
+            $foto = base_url($path . $name);
+           }
+
+
+        $this->userModel->saveUser([
             'nama' => $this->request->getVar('nama'),
             'id_kelas' => $this->request->getVar('kelas'),
             'npm' => $this->request->getVar('npm'),
+            'foto' => $foto
         ]);
 
         $data = [
@@ -117,7 +131,7 @@ class UserController extends BaseController
             'kelas' => $this->request->getVar('kelas'),
             'npm' => $this->request->getVar('npm'),
         ];
-        return view('profile', $data);
+        return redirect()->to('/user');
     }
     
 }
