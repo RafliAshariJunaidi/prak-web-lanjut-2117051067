@@ -29,8 +29,14 @@
 
                     <td>
                         <a class="btn btn-primary" href="<?= base_url('user/'.$user['id'])?>">Detail</a>
-                        <a class="btn btn-warning" href="">Edit</a>
-                        <a class="btn btn-danger" href="">Hapus</a>
+                        <a href="<?= base_url('user/' . $user['id']. '/edit') ?>">Edit</a>
+                        <!-- <a class="btn btn-warning" href="">Edit</a> -->
+                        <form action="<?=base_url('user/' . $user['id'])?>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <?= csrf_field() ?>
+                <input type="submit" class="btn btn-danger" value="Delete" style="width: 80px; height: 40px;">
+            </form>
+
                     </td>
                 </tr>
             <?php
