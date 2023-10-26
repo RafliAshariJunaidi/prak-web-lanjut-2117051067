@@ -12,6 +12,10 @@ $routes->get('/profile/(:any)/(:any)/(:any)', 'Home::profie/$1/$2/$3');
 $routes->get('/user/create', 'UserController::create');
 $routes->get('/user/profile/(:any)/(:any)/(:any)','UserController::profile/$1/$2/$3');
 $routes->post('/user/store', 'UserController::store');
+$routes->delete('/user/(:any)/edit', 'UserController::edit/$1');
+
+$routes->get('/user/(:any)', 'UserController::update/$1');
+$routes->delete('/user/(:any)', 'UserController::destroy/$1');
 $routes->get('/user/(:any)','UserController::show/$1');
 
 // $routes->get('/profile', 'Home::profile');
