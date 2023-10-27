@@ -11,6 +11,27 @@
 </head>
 
 <body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="height:10vh;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://avatars.githubusercontent.com/u/92414621?v=4" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+    </a>
+    <ul class="navbar-nav">
+      <div class="d-flex flex-row" style="position:relative">
+     <li class="nav-item" style="position:fixed;top:15px;left:87%;">
+     <a class="nav-link <?= $title == 'List User' || $title == 'Create User' || $title == 'Edit User' || $title == 'Profile'  ? 'active' : '' ?>" href="<?= base_url('/user') ?>">
+        <i class="nav-link"></i> <span class="ms-1 d-none d-sm-inline">User</span>
+      </li>
+      <li class="nav-item" style="position:fixed;top:0px;left:92%">
+        
+      <a class="nav-link <?= $title == 'List Kelas' || $title == 'Create kelas' || $title == 'List anggota kelas' || $title == 'Edit Kelas' ? 'active' : '' ?>" href="<?= base_url('/kelas'); ?>">
+        <i class="nav-link"></i> <span class="ms-1 d-none d-sm-inline">Kelas</span> </a>
+       
+      </li>
+    </div>
+    </ul>
+  </div>
+</nav>
 
   <?= $this->renderSection('content') ?>
 

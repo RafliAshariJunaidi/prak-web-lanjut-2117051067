@@ -14,15 +14,12 @@ class KelasSeeder extends Seeder
         $kelasModel->save([
             'nama_kelas' => 'A'
         ]);
-        
         $kelasModel->save([
             'nama_kelas' => 'B'
         ]);
-
         $kelasModel->save([
             'nama_kelas' => 'C'
         ]);
-
         $kelasModel->save([
             'nama_kelas' => 'D'
         ]);
